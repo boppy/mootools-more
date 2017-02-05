@@ -32,7 +32,7 @@ Number.implement({
 			var negativeLocale = getOption('negative') || {};
 			if (negativeLocale.prefix == null && negativeLocale.suffix == null) negativeLocale.prefix = '-';
 			['prefix', 'suffix'].each(function(key){
-				if (negativeLocale[key]) options[key] = getOption(key) + negativeLocale[key];
+				if (negativeLocale[key] != null) options[key] = (negativeLocale.exclusive ? '' : getOption(key)) + negativeLocale[key];
 			});
 
 			value = -value;
